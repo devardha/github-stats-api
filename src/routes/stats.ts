@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import axios from 'axios'
+import { request } from '../utils/request'
 
 const router = Router();
 
@@ -31,15 +31,7 @@ router.get('/:username/languages', (req, res) => {
     }
     `
 
-    axios({
-        url: 'https://api.github.com/graphql',
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'bearer 1018173dca8fe6bbbb3b7ee7358ca097b492fca1'
-        },
-        data: JSON.stringify({ query })
-    }).then(response => {
+    request(query).then(response => {
         const results = response.data.data.user.repositories.nodes
         const langs: object[] = [];
 
@@ -71,7 +63,7 @@ router.get('/:username/languages', (req, res) => {
             }
         })
 
-        const calculatedLang = [];
+        const calculatedLang: object[] = [];
 
         for (const prop in holder) {
             if (holder.hasOwnProperty(prop)) {

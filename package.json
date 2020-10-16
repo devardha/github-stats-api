@@ -11,19 +11,31 @@
     "tsc": "tsc",
     "build": "npm-run-all clean lint tsc copy-assets",
     "start": "npm-run-all tsc copy-assets server",
-    "dev:start": "npm-run-all build start",
+    "dev:start": "npm-run-all build server",
     "dev": "nodemon --watch src -e ts,ejs --exec npm run dev:start"
   },
-  "keywords": ["github api", "github stats", "statistics api", "github statictics api", "github statistics"],
+  "keywords": [
+    "github api",
+    "github stats",
+    "statistics api",
+    "github statictics api",
+    "github statistics"
+  ],
   "author": "devardha",
   "license": "ISC",
   "dependencies": {
+    "@graphql-tools/schema": "^6.2.4",
+    "apollo-server-express": "^2.18.2",
     "axios": "^0.20.0",
+    "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "graphql": "^15.3.0"
   },
   "devDependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.8",
+    "@types/graphql": "^14.5.0",
     "@types/node": "^14.11.8",
     "@types/shelljs": "^0.8.8",
     "nodemon": "^2.0.5",
