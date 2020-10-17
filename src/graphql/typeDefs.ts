@@ -4,6 +4,7 @@ const typeDefs = gql`
     type Language {
         languageName: String
         languageSize: Int
+        languagePercentage: String
     }
 
     type Stats{
